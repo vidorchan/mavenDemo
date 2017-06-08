@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by tim on 2017/6/6.
@@ -24,6 +27,8 @@ public class GithubController {
 
     private final GithubService githubService;
 
+    private final Lock checkpointsLock = new ReentrantLock();
+
     @Autowired
     public GithubController(GithubService githubService) {
         this.githubService = githubService;
@@ -32,9 +37,24 @@ public class GithubController {
 
     @RequestMapping(value = "/searchAGithubUser.html", method = RequestMethod.GET)
     public ModelAndView searchAGithubUser(HttpServletRequest servletRequest,
-          @RequestParam(value = "username", required = true) String username) {
+          @RequestParam(value = "username", required = true) final String username) throws ExecutionException, InterruptedException {
 
-        Github user = githubService.findAGithubUser(username);
+        ExecutorService executor = Executors.newScheduledThreadPool(20);
+        final long  firstCheckpointTimeNs = System.nanoTime();
+        FutureTask<Github> githubFuture = new FutureTask<Github>(new Callable<Github>() {
+            @Override
+            public Github call() throws Exception {
+                return githubService.findAGithubUser(username);
+            }
+        });
+        executor.execute(githubFuture);
+
+        Github user = githubFuture.get(); /*10-1669262698,20-1616801522*/
+
+//        Github user = githubService.findAGithubUser(username); /*1474181816*/
+
+        final long ellapsedTime = System.nanoTime() - firstCheckpointTimeNs;
+        System.out.println("last time---" + ellapsedTime + "---");
 
         Map<String, Object> model = new HashMap<String, Object>();
         model.put("user", user);

@@ -54,5 +54,14 @@
     <orderEntry type="library" name="Maven: com.netflix.feign:feign-gson:8.4.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.google.code.gson:gson:2.2.4" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.hystrix:hystrix-core:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.servo:servo-core:0.4.20" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:11.0.1" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:annotations:2.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.netflix.archaius:archaius-core:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-configuration:commons-configuration:1.8" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:2.0.0" level="project" />
   </component>
 </module>
