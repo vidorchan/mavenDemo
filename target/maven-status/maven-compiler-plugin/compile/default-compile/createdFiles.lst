@@ -1,0 +1,8 @@
+com\vidor\client\GithubClient.class
+com\vidor\connector\GithubConnector.class
+com\vidor\client\GitHubClientError.class
+com\vidor\service\GithubService.class
+com\vidor\controllers\GithubController.class
+com\vidor\client\GitHubErrorDecoder.class
+com\vidor\model\Github.class
+com\vidor\controllers\TestController.class
