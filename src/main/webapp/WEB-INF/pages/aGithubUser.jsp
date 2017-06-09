@@ -12,6 +12,9 @@
 </head>
 <body>
 <h1>Hello Feign</h1>
-<h2>${user.login}</h2>
+<h2>Welcome ${user.login}</h2>
+<div>
+
+</div>
 </body>
 </html>

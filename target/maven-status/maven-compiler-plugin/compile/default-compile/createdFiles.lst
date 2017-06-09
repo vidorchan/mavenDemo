@@ -1,3 +1,4 @@
+com\vidor\controllers\GithubController$1.class
 com\vidor\client\GithubClient.class
 com\vidor\connector\GithubConnector.class
 com\vidor\client\GitHubClientError.class
