@@ -10,6 +10,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <mvc:annotation-driven />
     <!-- 扫描指定包带@Controller注解的类-->
     <context:component-scan base-package="com.vidor.*"></context:component-scan>
 
@@ -24,7 +25,7 @@
     <!--<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" 配置自动扫描包配置此配置可省略/>-->
     <!-- 配置freeMarker的模板路径 -->
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="WEB-INF/ftl/" />
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
         <property name="defaultEncoding" value="UTF-8" />
     </bean>
     <!-- freemarker视图解析器 -->
@@ -33,6 +34,8 @@
         <property name="contentType" value="text/html;charset=UTF-8" />
         <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
         <property name="requestContextAttribute" value="rc" />
+        <!-- 开发环境下为false, 线上环境是true, 避免所有缓存 -->
+        <property name="cache" value="false"/>
     </bean>
 
     <mvc:resources location="/WEB-INF/image/" mapping="/image/**"/>
